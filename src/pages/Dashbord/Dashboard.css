@@ -1,0 +1,55 @@
+html, body, .container-fluid, .d-flex {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-color: #f8f9fa; /* Light background for the page */
+}
+
+.header, .footer {
+    background-color: #343a40; /* Dark background for header and footer */
+    color: white;
+}
+
+.card {
+    border-radius: 0.5rem;
+}
+
+.chart-container {
+    position: relative;
+    height: 100%; /* Adjust to ensure the chart fits within the container */
+    width: 100%;
+    padding: 0; /* Remove default padding */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.card-text {
+    font-size: 2rem;
+}
+
+.footer {
+    padding: 1rem;
+}
+
+@media (max-width: 768px) {
+    .card-text {
+        font-size: 1.5rem;
+    }
+}
+/* Add this to your CSS file or a <style> tag */
+.chart-container {
+    position: relative;
+    height: 300px; /* Adjust this value as needed */
+    width: 100%;
+}
