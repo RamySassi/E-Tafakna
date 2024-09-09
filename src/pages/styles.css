@@ -1,0 +1,234 @@
+.dashboard-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow: auto;
+}
+.dashboard-content-container {
+    margin: 1em;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap:25px;
+    overflow: auto;
+}
+.dashboard-content-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.dashboard-content-header h2 {
+    margin-top: auto;
+    margin-bottom: auto;
+    color: black;
+    font-size: xx-large;
+    font-weight: 700;
+}
+.dashboard-content-search {
+    font-weight: 400;
+    line-height: 1.4em;
+    letter-spacing: 0.009em;
+    box-sizing: border-box;
+    cursor: text;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    background-color: transparent;
+    font-size: 0.875rem;
+    border-radius: 0.375rem;
+    border: 1px solid gray;
+}
+.dashboard-content-search:focus {
+    outline: #2D83B5 auto 1px;
+}
+.dashboard-content-input {
+    font-style: inherit;
+    font-variant: inherit;
+    font-weight: inherit;
+    font-stretch: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    letter-spacing: inherit;
+    border: 0px;
+    box-sizing: content-box;
+    background: none transparent;   
+    margin: 0px;
+    display: block;
+    min-width: 0px;
+    width: 100%;
+    color: #000000;
+    font-size: 0.75rem;
+    padding: 0.625rem;
+}
+table {
+    width: 100%;
+    margin: auto;
+}
+th {
+    text-align: left;
+    padding: 12px 24px;
+    background: transparent;
+    box-shadow: none;
+    color: #2D83B5;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0.035em;
+    border-bottom: 0.05rem solid rgb(240, 242, 245);
+}
+tbody {
+    display: table-row-group;
+}
+tr, thead {
+    color: inherit;
+    display: table-row;
+    vertical-align: middle;
+    outline: 0px;
+}
+td {
+    text-align: left;
+    padding: 12px 24px;
+    background: transparent;
+    box-shadow: none;
+    border-bottom: 0.05rem solid rgb(240, 242, 245);
+}
+td div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.dashboard-content-avatar {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 20px;
+}
+td span {
+    margin: 0px;
+    font-size: 0.75rem;
+    line-height: 1.25;
+    letter-spacing: 0.035em;
+    opacity: 1;
+    text-transform: none;
+    vertical-align: unset;
+    text-decoration: none;
+    color: gray;
+    font-weight: 700;
+}
+.dashboard-content-icon {
+    width: 20px;
+    margin-right: 10px;
+}
+.dashboard-content-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.dashboard-content-footer .pagination {
+    padding: 0.5rem;
+    margin: 0.2rem;
+    border-radius: 5px;
+    background-color: #F0F2F5;
+    cursor: pointer;
+}
+.dashboard-content-footer .active-pagination {
+    padding: 0.5rem;
+    margin: 0.2rem;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #2D83B5;
+    cursor: pointer;
+}
+.empty-table {
+    margin: 0px;
+    font-size: 1rem;
+    line-height: 1.25;
+    letter-spacing: 0.035em;
+    color: gray;
+    font-weight: 700;
+    border-color: #FFFFFF;
+}
+.add-user-btn {
+    padding: 10px 20px;
+    background-color: #2D83B5;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.add-user-btn:hover {
+    background-color: #2D83B5;
+}
+/* Input Field Styles */
+.add-user-form .form-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    background-color: #f9fafb;
+}
+
+.add-user-form .form-group input:focus {
+    border-color: #007bff; /* Blue border when focused */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle blue glow */
+}
+
+.add-user-form .form-group input::placeholder {
+    color: #aaa; /* Lighter color for placeholder text */
+}
+
+.add-user-form .form-group input:hover {
+    border-color: #ccc; /* Slightly darker border on hover */
+}
+
+/* Submit Button Styling */
+.add-user-form .submit-btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-user-form .submit-btn:hover {
+    background-color: #0056b3;
+}
+
+.cancel-btn {
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cancel-btn:hover {
+    background-color: #0056b3;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.add-user-form .submit-btn:active {
+    background-color: #004085;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
