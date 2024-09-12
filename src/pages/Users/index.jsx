@@ -1,8 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Modal, Button, Form } from 'react-bootstrap';
+
 import DashboardHeader from '../../components/DashboardHeader';
 
 import all_orders from '../../constants/orders';
-import {calculateRange, sliceData} from '../../utils/table-pagination';
+import { calculateRange, sliceData } from '../../utils/table-pagination';
 
 import '../styles.css';
 
@@ -12,7 +15,7 @@ function Users () {
     const [page, setPage] = useState(1);
     const [pagination, setPagination] = useState([]);
     const [showAddUserForm, setShowAddUserForm] = useState(false); // State to show/hide form
-    const [newUser, setNewUser] = useState({name: '', offer: ''}); // State to handle new user input
+    const [newUser, setNewUser] = useState({ name: '', offer: '' }); // State to handle new user input
 
     useEffect(() => {
         setPagination(calculateRange(all_orders, 5));
@@ -61,17 +64,17 @@ function Users () {
         // Logic to add the new user to the orders list or handle API call can go here
 
         // Reset form and hide it
-        setNewUser({name: '', offer: ''});
+        setNewUser({ name: '', offer: '' });
         setShowAddUserForm(false);
     };
 
     // Handle cancel action
     const __handleCancel = () => {
-        setNewUser({name: '', offer: ''}); // Reset form values
+        setNewUser({ name: '', offer: '' }); // Reset form values
         setShowAddUserForm(false); // Hide form
     };
 
-    return(
+    return (
         <div className='dashboard-content'>
             <div className='dashboard-content-container'>
                 <div className='dashboard-content-header'>
@@ -85,52 +88,57 @@ function Users () {
                                 className='dashboard-content-input'
                                 onChange={e => __handleSearch(e)} />
                         </div>
-                        <button 
-                            className='add-user-btn' 
+                        <Button 
+                            variant='primary' 
                             onClick={__handleAddUserClick}>
                             Add New User
-                        </button>
+                        </Button>
                     </div>
                 </div>
 
-                {/* Conditionally render the Add User form */}
-                {showAddUserForm && (
-                    <form className='add-user-form' onSubmit={__handleSubmit}>
-                        <div className='form-group'>
-                            <label htmlFor='name'>Name</label>
-                            <input 
-                                type='text' 
-                                id='name' 
-                                name='name' 
-                                value={newUser.name} 
-                                onChange={__handleInputChange} 
-                                placeholder='Enter name' 
-                                required />
-                        </div>
-                        <div className='form-group'>
-                            <label htmlFor='offer'>Offres </label>
-                            <input 
-                                type='text' 
-                                id='offer' 
-                                name='offer' 
-                                value={newUser.offer} 
-                                onChange={__handleInputChange} 
-                                placeholder='Enter offer' 
-                                required />
-                        </div>
-                        <div className='form-actions'>
-                            <button type='submit' className='submit-btn'>Add User</button>
-                            <button type='button' className='cancel-btn' onClick={__handleCancel}>Cancel</button>
-                        </div>
-                    </form>
-                )}
+                {/* Modal for Add New User */}
+                <Modal show={showAddUserForm} onHide={__handleCancel}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Add New User</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Form onSubmit={__handleSubmit}>
+                            <Form.Group controlId='formName'>
+                                <Form.Label>Name</Form.Label>
+                                <Form.Control 
+                                    type='text' 
+                                    name='name' 
+                                    value={newUser.name} 
+                                    onChange={__handleInputChange} 
+                                    placeholder='Enter name' 
+                                    required />
+                            </Form.Group>
+                            <Form.Group controlId='formOffer'>
+                                <Form.Label>Offer</Form.Label>
+                                <Form.Control 
+                                    type='text' 
+                                    name='offer' 
+                                    value={newUser.offer} 
+                                    onChange={__handleInputChange} 
+                                    placeholder='Enter offer' 
+                                    required />
+                            </Form.Group>
+                            <div className='form-actions'>
+                                <Button type='submit' variant='primary'>Add User</Button>
+                                <Button type='button' variant='secondary' onClick={__handleCancel}>Cancel</Button>
+                            </div>
+                        </Form>
+                    </Modal.Body>
+                </Modal>
 
-<table>
+                <table>
                     <thead>
-                        <th>ID</th>
-                        <th>DATE</th>
-                        <th>COSTUMER</th>
-                        <th>PRODUCT</th>
+                        <tr>
+                            <th>ID</th>
+                            <th>DATE</th>
+                            <th>CUSTOMER</th>
+                            <th>PRODUCT</th>
+                        </tr>
                     </thead>
 
                     {orders.length !== 0 ?
@@ -139,18 +147,16 @@ function Users () {
                                 <tr key={index}>
                                     <td><span>{order.id}</span></td>
                                     <td><span>{order.date}</span></td>
-                                   
                                     <td>
                                         <div>
                                             <img 
                                                 src={order.avatar}
                                                 className='dashboard-content-avatar'
-                                                alt={order.first_name + ' ' +order.last_name} />
+                                                alt={order.first_name + ' ' + order.last_name} />
                                             <span>{order.first_name} {order.last_name}</span>
                                         </div>
                                     </td>
                                     <td><span>{order.product}</span></td>
-                                   
                                 </tr>
                             ))}
                         </tbody>

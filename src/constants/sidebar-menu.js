@@ -20,15 +20,15 @@ const sidebar_menu = [
     {
         id: 3,
         icon: ShippingIcon,
-        path: '/Offres ',
-        title: 'Offres ',
+        path: '/contrat ',
+        title: 'Contrat ',
     },
-    {
-        id: 4,
-        icon: UserIcon,
-        path: '/profile',
-        title: 'My account',
-    }
+    // {
+    //     id: 4,
+    //     icon: UserIcon,
+    //     path: '/profile',
+    //     title: 'My account',
+    // }
 ]
 
 export default sidebar_menu;
