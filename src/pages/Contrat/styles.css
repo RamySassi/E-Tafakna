@@ -1,64 +1,168 @@
-/* App.css or a separate CSS file */
-
-/* Flexbox container for contract cards */
+/* Enhanced grid for a more flexible and dynamic layout */
 .contract-list {
-    display: flex;
-    /* flex-wrap: wrap; */
-    gap: 1rem; /* Space between cards */
-    justify-content: center; /* Center align cards */
-  }
-  
-  /* Styling for each contract card */
-  .contract-card {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #ddd; /* Light grey border */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition for hover effect */
-    height: 300px; /* Fixed height */
-    width: 165px; /* Ensure card does not exceed container width */
-    overflow: hidden; /* Hide any overflow */
-  }
-  
-  /* Hover effect for contract cards */
-  .contract-card:hover {
-    transform: translateY(-5px); /* Slightly lift the card */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
-  }
-  
-  /* Body of the card */
-  .card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Distribute space evenly */
-    padding: 15px; /* Padding inside the card */
-    height: 100%; /* Full height */
-  }
-  
-  /* Title styling */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust column size */
+  gap: 2.5rem; /* Increased gap between cards */
+  justify-items: center; /* Center cards in their grid cells */
+  padding: 3rem 0; /* Extra padding around the grid */
+  background: linear-gradient(145deg, #e6e9f0, #eef1f5); /* Subtle background gradient */
+}
+
+/* Transformative and futuristic card styling */
+.contract-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  background: #fff;
+  border-radius: 20px; /* More rounded corners */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Deeper shadow for 3D effect */
+  transition: all 0.4s ease-in-out; /* Smooth animation for all property changes */
+  height: 350px;
+  width: 280px; /* Slightly wider cards */
+  overflow: hidden;
+  transform-style: preserve-3d; /* Enable 3D effects */
+  z-index: 1;
+}
+
+.contract-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, rgba(0, 123, 255, 0.15), rgba(255, 255, 255, 0.1)); /* Subtle gradient overlay */
+  z-index: -1;
+  transition: opacity 0.4s;
+  opacity: 0; /* Initially invisible */
+}
+
+.contract-card:hover::before {
+  opacity: 1; /* Overlay appears on hover */
+}
+
+/* Bold hover effect for the card */
+.contract-card:hover {
+  transform: translateY(-15px) scale(1.05) rotateY(5deg); /* Lift and rotate card with scale */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25); /* More dramatic shadow on hover */
+  z-index: 10; /* Bring card to front */
+}
+
+/* Styling for card body */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  transform-style: preserve-3d;
+}
+
+/* Sleek title style */
+.card-title {
+  font-family: 'Montserrat', sans-serif; /* High-end modern font */
+  font-size: 1.5rem; /* Bigger title size */
+  font-weight: 700; /* Bolder title */
+  color: #333;
+  letter-spacing: 1px;
+  margin-bottom: 15px; /* Spacing below the title */
+}
+
+/* Text styling with modern touch */
+.card-text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  color: #555;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+  margin-bottom: 20px; /* Extra spacing */
+}
+
+/* Button styling with powerful hover */
+.btn-primary {
+  font-family: 'Poppins', sans-serif;
+  background-color: #007bff;
+  border: none;
+  padding: 12px 25px; /* Larger button for visual impact */
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 30px; /* Extra rounded corners */
+  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3); /* Strong button shadow */
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: scale(1.1); /* Increase button size on hover */
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.5); /* Larger shadow on hover */
+}
+
+/* Styling for contract type buttons */
+.contract-button {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  border-radius: 30px;
+  padding: 12px 25px;
+  margin-right: 1rem; /* Space between buttons */
+  border: 2px solid #007bff; /* Clearer outline */
+  background-color: #ffffff;
+  color: #007bff;
+  transition: all 0.4s ease; /* Smoother hover effect */
+}
+
+.contract-button:hover {
+  background-color: #007bff;
+  color: #ffffff; /* Button text turns white on hover */
+  transform: translateY(-5px); /* Lift button on hover */
+}
+
+/* Special styling for Travail contracts */
+.contract-travail {
+  border: 2px solid #007bff;
+  background-color: #f0f4ff; /* Light blue background */
+}
+
+.contract-travail .card-body {
+  background-color: #e1e7ff; /* Subtle contrast inside the card */
+}
+
+/* Responsive typography and layout for smaller screens */
+@media (max-width: 768px) {
   .card-title {
-    font-size: 1.25rem; /* Slightly larger title font */
-    margin-bottom: 10px; /* Space below title */
+    font-size: 1.3rem;
   }
-  
-  /* Text styling */
+
   .card-text {
-    font-size: 1rem; /* Standard text size */
-    margin-bottom: 10px; /* Space below text */
+    font-size: 0.9rem;
   }
-  
-  /* Button styling */
+
   .btn-primary {
-    margin-top: auto; /* Push button to the bottom */
+    padding: 10px 20px;
   }
-  
-  /* Specific styling for "Contrats de Travail" if needed */
-  .contract-travail {
-    border: 2px solid #007bff; /* Blue border for distinction */
+
+  .contract-list {
+    grid-template-columns: 1fr; /* Stack cards in one column for small screens */
   }
-  
-  .contract-travail .card-body {
-    background-color: #f8f9fa; /* Light background color for contrast */
+}
+
+/* Smooth entrance animations */
+.contract-card, .btn-primary {
+  animation: fadeInUp 0.6s ease both; /* Slower animation for better effect */
+}
+
+/* Smooth fade in from below */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px); /* More dramatic initial translation */
   }
-  
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
